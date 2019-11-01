@@ -1,0 +1,81 @@
+# depslib dependency file v1.0
+1496595533 source:c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\avl.cpp
+	"AVL.h"
+
+1496534492 c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\structs.h
+	<string>
+	<vector>
+
+1496576927 
+
+1496576927 source:c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\hash.cpp
+	"Hash.h"
+
+1496576251 c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\hash.h
+	<stdlib.h>
+	<string.h>
+	"structs.h"
+
+1496594586 "
+
+1496594595 source:c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"structs.h"
+	"AVL.h"
+	"Hash.h"
+	"RedBlack.h"
+
+1496595541 h"
+
+1496575111 c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\avl.h
+	"structs.h"
+
+1496594586 c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\redblack.h
+	"structs.h"
+
+1496595541 source:c:\users\alfredo tito\documents\estrutura de dados ii\ed2trab2\redblack.cpp
+	"RedBlack.h"
+
+1572003867 source:/home/unasus/Desktop/Mj/ED2/testeT2ED2/AVL.cpp
+	"AVL.h"
+
+1572003867 /home/unasus/Desktop/Mj/ED2/testeT2ED2/AVL.h
+	"structs.h"
+
+1572003867 /home/unasus/Desktop/Mj/ED2/testeT2ED2/structs.h
+	<string>
+	<vector>
+
+1572003867 source:/home/unasus/Desktop/Mj/ED2/testeT2ED2/Hash.cpp
+	"Hash.h"
+
+1572003867 /home/unasus/Desktop/Mj/ED2/testeT2ED2/Hash.h
+	<stdlib.h>
+	<string.h>
+	"structs.h"
+
+1572003867 source:/home/unasus/Desktop/Mj/ED2/testeT2ED2/main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"structs.h"
+	"AVL.h"
+	"Hash.h"
+	"RedBlack.h"
+
+1572003867 /home/unasus/Desktop/Mj/ED2/testeT2ED2/RedBlack.h
+	"structs.h"
+
+1572003867 source:/home/unasus/Desktop/Mj/ED2/testeT2ED2/RedBlack.cpp
+	"RedBlack.h"
+
