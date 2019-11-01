@@ -142,3 +142,10 @@ int Query(RBnode* root,int str,int* passos){
 //         delete[]t;
 //     }
 // }
+void printarTree(RBnode *root){/// a função ultilizada foi a pre-ordem pois imprime primeiro a raiz, depois segue pela esquerda e depois pela direita 
+    if(root != NULL) {
+	  printarTree(root->left);
+	  printf("%i\n", root->info);
+	  printarTree(root->right);
+    }
+}

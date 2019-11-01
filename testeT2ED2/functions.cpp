@@ -111,7 +111,7 @@ void menu(){
             printf("AQUI É A AVL COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
             printarTree(AVLroot);
             printf("AQUI É A RB COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
-            // 
+            printarTree(RBroot); 
             printf("AQUI É O HASH COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
             imprimeHash(tab);
             printf("\nAQUI É A LISTA COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
@@ -331,19 +331,16 @@ void colocarAemB(){
         }
     }
     //     /*RB*/
-    // if (l != NULL){
-    //     if( l -> first != NULL){
-    //         cout<<"Elementos encontrados na lista e na RB :"<< endl;
-    //         // cout<<"Arvore Binaria:"<<endl;
-    //         // printarTree(Binariaroot);
-    //         aux = l-> first;
-    //         while(aux != NULL){
-    //             /*buscar na Binaria*/
-    //             ColocarnaRB(aux-> info);
-    //             aux= aux->next;
-    //         }
-    //     }
-    // }
+    if (l != NULL){
+        if( l -> first != NULL){
+            aux = l-> first;
+            while(aux != NULL){
+                /*buscar na Binaria*/
+                ColocarnaRB(aux-> info);
+                aux= aux->next;
+            }
+        }
+    }
     /*HASH*/
      if (l != NULL){
         if( l -> first != NULL){
@@ -400,8 +397,8 @@ void ColocarnaRB(int data){
     
     
     stat = Query(RBroot, busca, &passos);
-    if (stat != 0){
-        cout<<busca<< endl;
+    if (stat == 0){
+        RB_Insert(&RBroot, busca);
     }
     // cout<<"tempo gasto na busca Binaria: "<<passos<<" passos para o dado "<<data<<endl;
     

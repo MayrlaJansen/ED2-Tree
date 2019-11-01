@@ -11,5 +11,6 @@
 
     extern void RB_Insert(RBnode** root, int info);
     int Query(RBnode* root,int str,int* passos);
+    void printarTree(RBnode *root);
     // void RBDestroy(RBnode *t);
 #endif
