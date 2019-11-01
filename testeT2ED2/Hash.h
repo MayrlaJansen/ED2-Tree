@@ -33,5 +33,6 @@ int buscaHash(Hash tab, int num, int* passos);
 void imprimeHash(Hash tab);
 void removeHash(Hash tab, int num);
 int imprimeColisao(Hash tab, int pos);
+int buscaColocaHash(Hash tab,int num, int* passos);
 
 #endif

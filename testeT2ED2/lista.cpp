@@ -68,16 +68,17 @@ int sllQuerry(sllist *l, int key, int* passos){
       cur = l -> first;
       while ( cur != NULL){
         if (cur->info == key){
-        *passos = *passos + 1;
-          return cur->info;
+          *passos = *passos + 1;
+          return 0;
         }
         cur = cur->next;
       }
+      *passos = *passos + 1;
+      return -1;
     }
   }
     
-        *passos = *passos + 1;
-        return -1;
+  
 
 }
 

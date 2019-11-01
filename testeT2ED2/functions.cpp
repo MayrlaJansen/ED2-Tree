@@ -27,6 +27,7 @@ sllist *l2;
 
 void AdicionarConjuntoB(){
     int info;
+    l2 = sllCreate();
     FILE *arquivo; 
     ifstream conjuntoA; 
     conjuntoA.open("menor.txt");
@@ -50,6 +51,7 @@ void AdicionarConjuntoB(){
             }
              }while(!feof(arquivo)); 
          }
+        //  printar(l2);
     fclose(arquivo);
 
 }
@@ -110,8 +112,10 @@ void menu(){
             printarTree(AVLroot);
             printf("AQUI É A RB COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
             // 
-            printf("AQUI É o HASH COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
+            printf("AQUI É O HASH COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
             imprimeHash(tab);
+            printf("\nAQUI É A LISTA COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
+            printar(l2);
             break;
             case 3:
             cout<<"\t $$$$$$"<<endl;
@@ -202,7 +206,7 @@ void buscarAemB(){
     /*LISTA*/
     if (l != NULL){
         if( l -> first != NULL){
-            cout<<"Elementos encontrados na lista e na arvore binária:"<< endl;
+            cout<<"Elementos encontrados na lista e na Lista2 :"<< endl;
             // cout<<"Arvore Binaria:"<<endl;
             // printarTree(Binariaroot);
             aux = l-> first;
@@ -287,11 +291,11 @@ void printar(sllist *l){
         if(l->first != NULL){
             aux = l->first;
             // int value = ( (int)aux->data);
-            cout<<"achado:"<<aux->info<< endl;
+            cout<<aux->info<< endl;
             while(aux->next != NULL){
                 aux = aux->next;
                 int value = ((unsigned int)aux->info);
-                cout<<"achado:"<<value<< endl;
+                cout<<value<< endl;
             }
         }else{
             printf("A lista está vazia ! \n\n\n");
@@ -408,7 +412,8 @@ void ColocarnoHash(int data){
     int busca = data;
     
     
-    stat = buscaHash(tab, busca, &passos);
+    stat = buscaColocaHash(tab, busca, &passos);
+    cout<<stat<< endl;
     if (stat == 0){
         insereHash(tab,busca);
     }
@@ -422,8 +427,8 @@ void ColocarnaLista(int data){
     
     
     stat = sllQuerry(l2, busca, &passos);
-    if (stat != -1){
-        cout<<busca<< endl;
+    if (stat == -1){
+        l2 = sllInsertLast(l2, busca);
     }
     // cout<<"tempo gasto na busca Binaria: "<<passos<<" passos para o dado "<<data<<endl;
     
