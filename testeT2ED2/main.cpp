@@ -27,10 +27,10 @@ int main(){
     /*adicionando o menor arquivo a uma lista encadeada*/
     AdicionarConjuntoA();
 
-    /*adicionando o maior arquivo a uma AVL, RB, BINARIA E HASH*/
+    // /*adicionando o maior arquivo a uma AVL, RB, BINARIA E HASH*/
     AdicionarConjuntoB();
-    // printf("treeB");
-    // // printarTree(Binariaroot);
+    // // printf("treeB");
+    // // // printarTree(Binariaroot);
     menu();
 
 

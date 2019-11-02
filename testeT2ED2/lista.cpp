@@ -77,26 +77,92 @@ int sllQuerry(sllist *l, int key, int* passos){
       return -1;
     }
   }
-    
+    return -1;
   
 
 }
 
 
 //remover o spec
-int sllRemoveSpec(sllist *l,void *key,int(*cmp)(void*,int)){
+// int sllRemoveSpec(sllist *l,int key){
+//   Sllnode *spec,*prev;
+//   int stat;
+//   int data;
+//   if(l != NULL){
+//     if (l->first != NULL){
+//       prev = NULL;
+//       spec=l->first;
+//       stat=cmp(key,spec->info);
+//       while(stat != TRUE && spec->next != NULL){
+//         prev = spec;
+//         spec= spec->next;
+//         stat = cmp(key,spec->info);
+//       }
+//       if(stat == TRUE){
+//         if(prev == NULL){
+//           l->first=spec->next;
+//         }else{
+//           prev->next= spec->next;
+//         }
+//         data=spec->info;
+//         free(spec);
+//         return data;
+//       }
+//     }
+//   }
+//   return 0;
+// }
+
+// int sllRemoveSpec(sllist *l,int key){
+//   Sllnode *spec,*prev;
+//   int stat;
+//   int data;
+//   if(l != NULL){
+//     if (l->first != NULL){
+//       prev = NULL;
+//       spec=l->first;
+//       // stat=cmp(key,spec->info);
+//       while(stat != TRUE && spec->next != NULL){
+//         if (key == spec -> info){
+//           stat == TRUE;
+//         }
+//         prev = spec;
+//         spec= spec->next;
+//       }
+//       if(stat == TRUE){
+//         if(prev == NULL){
+//           l->first=spec->next;
+//         }else{
+//           prev->next= spec->next;
+//         }
+//         data=spec->info;
+//         free(spec);
+//         return data;
+//       }
+//     }
+//   }
+//   return 0;
+// }
+
+int sllRemoveSpec(sllist *l,int key){
   Sllnode *spec,*prev;
-  int stat;
+  int stat = FALSE;
   int data;
-  if(l != NULL){
+  
+  if (l != NULL){
     if (l->first != NULL){
       prev = NULL;
-      spec=l->first;
-      stat=cmp(key,spec->info);
-      while(stat != TRUE && spec->next != NULL){
+      spec = l ->first;
+      if (spec->info == key){
+          stat = TRUE;
+      }
+      while (stat !=TRUE && spec->next != NULL){
         prev = spec;
         spec= spec->next;
-        stat = cmp(key,spec->info);
+        if (spec->info == key){
+          stat = TRUE;
+        }
+        
       }
       if(stat == TRUE){
         if(prev == NULL){
@@ -108,12 +174,12 @@ int sllRemoveSpec(sllist *l,void *key,int(*cmp)(void*,int)){
         free(spec);
         return data;
       }
+      return 0;
     }
+    return 0;
   }
   return 0;
 }
-
-
 //destruir a lista
 int sllDestroy(sllist *l){
   if (l!= NULL){

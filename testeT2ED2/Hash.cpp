@@ -113,8 +113,9 @@ void removeHash(Hash tab, int num)
   {
    printf("\n\n\n");
    imprimeColisao(tab,pos);
-   printf("\n\nQual registro deseja apagar =  ");
-   scanf("%d",&ex);
+  //  printf("\n\nQual registro deseja apagar =  ");
+  //  scanf("%d",&ex);
+  ex = num;
    if(tab[pos]->info == ex)
    {
     if(tab[pos]->prox == NULL)
@@ -168,24 +169,20 @@ void removeHash(Hash tab, int num)
   }
 }
 
-int imprimeColisao(Hash tab, int pos)
-{
+int imprimeColisao(Hash tab, int pos){
  Dados* aux = tab[pos];
- if(aux == NULL)
- {
-//   printf("Esta posicao esta vazia!");
+ if(aux == NULL){
   return 0;
- }else
- {
-  if(aux != NULL)
-  {
-   printf("%3d",aux->info);
-   while(aux->prox != NULL)
-   {
-    printf(" -> %d",aux->prox->info);
-    aux = aux->prox;
-    return 0;
+ }else{
+    if(aux != NULL) {
+    printf("%3d",aux->info);
+    while(aux->prox != NULL){
+      printf(" -> %d",aux->prox->info);
+      aux = aux->prox;
    }
+    return 0;
   }
+  return 0;
  }
+ return 0;
 }

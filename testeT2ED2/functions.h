@@ -23,5 +23,12 @@ void ColocarnaAVL(int data);
 void ColocarnaRB(int data);
 void ColocarnoHash(int data);
 void ColocarnaLista(int data);
+void removerAemB();
+void RemovernaBinaria(int data);
+void RemovernaAVL(int data);
+void RemovernaRB(int data);
+void RemovernoHash(int data);
+void RemovernaLista(int data);
+
 
 #endif

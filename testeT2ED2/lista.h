@@ -18,7 +18,7 @@ typedef struct _sllist_{
 sllist *sllCreate();
 sllist *sllInsertLast(sllist *l, int inf);
 int sllQuerry(sllist *l, int key, int* passos);
-int sllRemoveSpec(sllist *l,void *key,int(*cmp)(void*,int));
+int sllRemoveSpec(sllist *l,int key);
 int sllDestroy(sllist *l);
 
 #endif

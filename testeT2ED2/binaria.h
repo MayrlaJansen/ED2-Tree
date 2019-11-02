@@ -14,5 +14,6 @@
     void Destroy(BinariaNode *t);
     void printarTree(BinariaNode *root);
     int treeIsEmpty(BinariaNode* root);
+    void removeB (BinariaNode *pt, int info);
 
 #endif 

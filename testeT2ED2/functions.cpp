@@ -28,6 +28,7 @@ sllist *l2;
 void AdicionarConjuntoB(){
     int info;
     l2 = sllCreate();
+    char p;
     FILE *arquivo; 
     ifstream conjuntoA; 
     conjuntoA.open("menor.txt");
@@ -38,27 +39,32 @@ void AdicionarConjuntoB(){
         string str = buffer;
         documento.push_back(str);
     }
-    arquivo = fopen("maior.txt","r"); 
+   arquivo = fopen ( "maior.txt", "r" );
     if (arquivo) {
-        do{
-            fscanf(arquivo,"%d",&info );
-            if(info != '[' || info != ']'){
-                Binariaroot = insert_BinariaNode(Binariaroot, info); //
-                AVLroot = insert_AVLnode(AVLroot, info);
-                RB_Insert(&RBroot, info);
-                insereHash(tab,info);
-                l2 = sllInsertLast(l2, info);
-            }
-             }while(!feof(arquivo)); 
+        fscanf (arquivo, "%c" ,&p);
+        // printf("%c",p);
+        do {
+            fscanf (arquivo, "%d" , &info);
+            fscanf (arquivo, "%c" ,&p);
+            // printf("%d", info);
+            // if (info != '[' && info != ']' && info != ',' ) {
+                Binariaroot = insert_BinariaNode (Binariaroot, info); //
+                AVLroot = insert_AVLnode (AVLroot, info);
+                RB_Insert (& RBroot, info);
+                insereHash (tab, info);
+                l2 = sllInsertLast (l2, info);
+            // }
+             } while (p != ']');
          }
-        //  printar(l2);
-    fclose(arquivo);
-
+         printf("L2\n");
+          printar (l2);
+    fclose (arquivo);
 }
 
 void AdicionarConjuntoA(){
     l = sllCreate();
     int info;
+    char p;
     FILE *arquivo; 
     ifstream conjuntoA; 
     conjuntoA.open("menor.txt");
@@ -71,14 +77,17 @@ void AdicionarConjuntoA(){
     }
     arquivo = fopen("menor.txt","r"); 
     if (arquivo) {
+        fscanf (arquivo, "%c" ,&p);
+        // printf("%c",p);
         do{
-            fscanf(arquivo,"%d",&info );
-            if(info != '[' || info != ']'){
-                l = sllInsertLast(l, info); // INSERE O NUMERO NA LISTA
-            }
-             }while(!feof(arquivo)); 
+            fscanf (arquivo, "%d" , &info);
+            fscanf (arquivo, "%c" ,&p);
+            // printf("%d", info);
+            l = sllInsertLast(l, info); // INSERE O NUMERO NA LISTA
+            }while(p != ']'); 
          }
-        //  printar(l);
+         printf("L\n");
+         printar(l);
     fclose(arquivo);
 
 }
@@ -100,11 +109,9 @@ void menu(){
         cin>>opcao;
         switch (opcao){
             case 1: 
-            cout<<"\t######################################"<<endl;
             buscarAemB();
             break;
             case 2:
-            cout<<"\t !!!!!!"<<endl;
             colocarAemB();
             printf("AQUI É A ARVORE BINARIA COM INSERCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
             printarTree(Binariaroot);
@@ -118,7 +125,17 @@ void menu(){
             printar(l2);
             break;
             case 3:
-            cout<<"\t $$$$$$"<<endl;
+            removerAemB();
+            printf("AQUI É A ARVORE BINARIA COM REMOCAO DOS ELEMENTOS DE A QUE ESTAO EM B:\n");
+            printarTree(Binariaroot);
+            printf("AQUI É A AVL COM REMOCAO DOS ELEMENTOS DE A QUE ESTAO EM B:\n");
+            printarTree(AVLroot);
+            printf("AQUI É A RB COM REMOCAO DOS ELEMENTOS DE A QUE ESTAO EM B:\n");
+            // printarTree(RBroot);
+            printf("AQUI É O HASH COM REMOCAO DOS ELEMENTOS DE A QUE ESTAO EM B:\n");
+            imprimeHash(tab);
+            printf("\nAQUI É A LISTA COM REMOCAO DOS ELEMENTOS DE A QUE NAO ESTAO EM B:\n");
+            printar(l2);
             break;
             case 4:
             cout<<"\t Fim de execução!"<<endl;
@@ -426,6 +443,132 @@ void ColocarnaLista(int data){
     stat = sllQuerry(l2, busca, &passos);
     if (stat == -1){
         l2 = sllInsertLast(l2, busca);
+    }
+    // cout<<"tempo gasto na busca Binaria: "<<passos<<" passos para o dado "<<data<<endl;
+    
+}
+void removerAemB(){
+    Sllnode *aux;
+    int data;
+    /*BINARIA*/
+    if (l != NULL){
+        if( l -> first != NULL){
+            aux = l-> first;
+            while(aux != NULL){
+                /*buscar na Binaria*/
+                RemovernaBinaria(aux-> info);
+                aux= aux->next;
+            }
+        }
+    }
+    /*AVL*/
+    if (l != NULL){
+        if( l -> first != NULL){
+            aux = l-> first;
+            while(aux != NULL){
+                /*buscar na Binaria*/
+                RemovernaAVL(aux-> info);
+                aux= aux->next;
+            }
+        }
+    }
+    // //     /*RB*/
+    // if (l != NULL){
+    //     if( l -> first != NULL){
+    //         aux = l-> first;
+    //         while(aux != NULL){
+    //             /*buscar na Binaria*/
+    //             RemovernaRB(aux-> info);
+    //             aux= aux->next;
+    //         }
+    //     }
+    // }
+    // /*HASH*/
+     if (l != NULL){
+        if( l -> first != NULL){
+            aux = l-> first;
+            while(aux != NULL){
+                /*buscar no Hash*/
+                RemovernoHash(aux-> info);
+                aux= aux->next;
+            }
+        }
+    }
+    // /*LISTA*/
+    if (l != NULL){
+        if( l -> first != NULL){
+            aux = l-> first;
+            while(aux != NULL){
+                /*buscar na Lista*/
+                RemovernaLista(aux-> info);
+                aux= aux->next;
+            }
+        }
+    }
+}
+void RemovernaBinaria(int data){
+    int passos = 0;
+    int stat;
+    int busca = data;
+    
+    
+    stat = QueryB(Binariaroot, busca, &passos);
+    // printf("stat %d",stat);
+    if (stat == 1){
+        removeB(Binariaroot,busca);
+    }
+    // cout<<"tempo gasto para Remover na Binaria: "<<passos<<" passos para o dado "<<data<<endl;
+    
+}
+void RemovernaAVL(int data){
+    int passos = 0;
+    int stat;
+    int busca = data;
+    
+    stat = Query(AVLroot, busca, &passos);
+    // printf("stat %d",stat);
+    if (stat != 0){
+        AVLroot = remover_no_arvore(AVLroot, busca);
+    }
+    // cout<<"tempo gasto na busca Binaria: "<<passos<<" passos para o dado "<<data<<endl;
+}
+
+void RemovernaRB(int data){
+    int passos = 0;
+    int stat;
+    int busca = data;
+    
+    
+    stat = Query(RBroot, busca, &passos);
+    if (stat == 0){
+        RB_Insert(&RBroot, busca);
+    }
+    // cout<<"tempo gasto na busca Binaria: "<<passos<<" passos para o dado "<<data<<endl;
+    
+}
+void RemovernoHash(int data){
+    int passos = 0;
+    int stat;
+    int busca = data;
+    
+    
+    stat = buscaColocaHash(tab, busca, &passos);
+    cout<<stat<< endl;
+    if (stat != 0){
+        removeHash(tab,busca);
+    }
+    // cout<<"tempo gasto na busca Binaria: "<<passos<<" passos para o dado "<<data<<endl;
+    
+}
+void RemovernaLista(int data){
+    int passos = 0;
+    int stat;
+    int busca = data;
+    
+    
+    stat = sllQuerry(l2, busca, &passos);
+    if (stat != -1){
+        sllRemoveSpec(l2, busca);
     }
     // cout<<"tempo gasto na busca Binaria: "<<passos<<" passos para o dado "<<data<<endl;
     
