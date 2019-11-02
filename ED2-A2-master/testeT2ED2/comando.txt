@@ -1,0 +1,1 @@
+g++ -o test main.cpp AVL.cpp Hash.cpp RedBlack.cpp binaria.cpp lista.cpp functions.cpp
